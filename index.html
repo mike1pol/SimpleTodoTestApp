@@ -17,33 +17,36 @@
 		}
 	</style>
 </head>
-<body ng-controller="TodoCtrl">
+<body ng-controller="TodoCtrl" ng-app="Todo">
 	<div class="container">
 		<h1>My Todo App</h1>
 		<hr>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>New Todo:</th>
-					<th>
-						<input type="text" class="form-control" ng-model="newTodo" placeholder="What to do?">
-					</th>
-					<th>
-						<button class="btn btn-default" ng-click="addTodo()">Add</button>
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="todo in todos">
-					<td>{{ $index }}</td>
-					<td>{{ todo.desc }}</td>
-					<td>
-						<button class="btn btn-default" ng-click="do($index)">Done</button>
-						<button class="btn btn-default" ng-click="delete($index)">Delete</button>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<form ng-submit="addTodo();">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>New Todo:</th>
+						<th>
+							<input type="text" class="form-control" ng-model="newTodo" placeholder="What to do?" required name="newTodo">
+						</th>
+						<th>
+							<button class="btn btn-default">Add</button>
+							<button class="btn btn-default" ng-click="clearDone()">Clear Done</button>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="todo in todos">
+						<td>{{ $index }}</td>
+						<td>{{ todo.desc }}</td>
+						<td>
+							<button class="btn btn-default" ng-click="do($index)"><span ng-show="!todo.done">Done</span><span ng-show="todo.done">Undone</span></button>
+							<button class="btn btn-default" ng-click="delete($index)">Delete</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
 	</div>
 </body>
 </html>
