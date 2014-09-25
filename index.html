@@ -31,7 +31,7 @@
 						</th>
 						<th>
 							<button class="btn btn-default">Add</button>
-							<button class="btn btn-default" ng-click="clearDone()">Clear Done</button>
+							<button class="btn btn-default" type="button" ng-click="clearDone()">Clear Done</button>
 						</th>
 					</tr>
 				</thead>
@@ -40,8 +40,8 @@
 						<td>{{ $index }}</td>
 						<td>{{ todo.desc }}</td>
 						<td>
-							<button class="btn btn-default" ng-click="do($index)"><span ng-show="!todo.done">Done</span><span ng-show="todo.done">Undone</span></button>
-							<button class="btn btn-default" ng-click="delete($index)">Delete</button>
+							<button class="btn btn-default" type="button" ng-click="do($index)"><span ng-show="!todo.done">Done</span><span ng-show="todo.done">Undone</span></button>
+							<button class="btn btn-default" type="button" ng-click="delete($index)">Delete</button>
 						</td>
 					</tr>
 				</tbody>
